@@ -1,3 +1,7 @@
+"""
+Provides some arithmetic functions
+"""
+
 def adder(a, b):
     """
     This function adds two numbers
