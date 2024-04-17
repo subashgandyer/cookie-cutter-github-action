@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -12,11 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Make lint
-      run: |
-        make lint
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
 
-    - name: Make Test
+    - name: Install dependencies
+      run: |
+        make install
+
+    - name: Run tests
       run: |
         make test
-    
