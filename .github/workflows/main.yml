@@ -1,0 +1,22 @@
+name: TEST
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Make lint
+      run: |
+        make lint
+
+    - name: Make Test
+      run: |
+        make test
+    
